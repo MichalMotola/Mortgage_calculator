@@ -5,6 +5,8 @@ let Payment= document.getElementById('Payment')
 let result = document.getElementById('result')
 let checkValue = document.getElementById('checkValue')
 
+let arryInputs = [Fund, Intrest,Years, Payment]
+let ErrorInputs = [FundAmountError,IntrestError,YearsError,PaymentError]
 
 function calc()
 {
@@ -16,84 +18,35 @@ else
 checkValue.innerHTML="הסכום נמוך, הינך יכול לשלם אותו"
 }
 
+for (let i=0; i<arryInputs.length;i++){
+
+
+
 function checkInput(event)
  {
     let value = Number(event.target.value)
+    let Error = ErrorInputs[i]
 
 
 
-    if (isNaN(value)) {
-        Fund.style.border = '2px solid red'
-        document.getElementById('FundAmountError').innerHTML = 'נא להזין רק מספרים'
+    if (isNaN(value)|| value=="") {
+        arryInputs[i].style.border = '2px solid red'
+        Error.innerHTML = 'נא להזין רק מספרים'
     } else {
-        Fund.style.border = ''
-        document.getElementById('FundAmountError').innerHTML = ''
+       arryInputs[i].style.border = ''
+       Error.innerHTML = ''
     }
 }
-Fund.addEventListener(
+arryInputs[i].addEventListener(
     'change',
     checkInput
 )
-
-
-function checkInput2(event)
- {
-    let value = Number(event.target.value)
+} 
 
 
 
-    if (isNaN(value)) {
-        Intrest.style.border = '2px solid red'
-        document.getElementById('IntrestError').innerHTML = 'נא להזין רק מספרים'
-    } else {
-        Intrest.style.border = ''
-        document.getElementById('IntrestError').innerHTML = ''
-    }
-}
-Intrest.addEventListener(
-    'change',
-    checkInput2
-)
 
-
-function checkInput3(event)
- {
-    let value = Number(event.target.value)
-
-
-
-    if (isNaN(value)) {
-        Years.style.border = '2px solid red'
-        document.getElementById('YearsError').innerHTML = 'נא להזין רק מספרים'
-    } else {
-        Years.style.border = ''
-        document.getElementById('YearsError').innerHTML = ''
-    }
-}
-Years.addEventListener(
-    'change',
-    checkInput3
-)
-
-
-function checkInput4(event)
- {
-    let value = Number(event.target.value)
-
-
-
-    if (isNaN(value)) {
-        Payment.style.border = '2px solid red'
-        document.getElementById('PaymentError').innerHTML = 'נא להזין רק מספרים'
-    } else {
-        Payment.style.border = ''
-        document.getElementById('PaymentError').innerHTML = ''
-    }
-}
-Payment.addEventListener(
-    'change',
-    checkInput4
-)
+ 
 
 
 
